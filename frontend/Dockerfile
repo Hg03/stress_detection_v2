@@ -2,11 +2,10 @@ FROM python:3.10-slim
 
 WORKDIR /workspace
 
-# Copy the entire backend directory (including its pyproject.toml)
-COPY frontend ./frontend
+COPY frontend/pyproject.toml /workspace/
 
 # Change to backend directory where pyproject.toml exists
-WORKDIR /workspace/frontend
+COPY . /workspace/
 
 # Install uv and sync dependencies
 ENV UV_LINK_MODE=copy
@@ -19,4 +18,4 @@ RUN pip install --no-cache-dir uv && \
 EXPOSE 8501
 
 # Use uv run to execute streamlit
-CMD ["uv", "run", "streamlit", "run", "app.py", "--server.port", "8501"]
+CMD ["uv", "run", "streamlit", "run", "frontend/app.py", "--server.port", "8501"]
