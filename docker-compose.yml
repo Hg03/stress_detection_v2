@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: .  # Build from root directory
+      dockerfile: backend/Dockerfile  # Path to Dockerfile
+    ports:
+      - "8000:8000"  # FastAPI default port
+    volumes:
+      - ./backend:/workspace/backend  # For development hot-reload
+    environment:
+      - PYTHONPATH=/workspace
+    
+  frontend:
+    build:
+      context: .  # Build from root directory  
+      dockerfile: frontend/Dockerfile  # Path to Dockerfile
+    ports:
+      - "8501:8501"  # Or whatever port your frontend uses
+    volumes:
+      - ./frontend:/workspace/frontend
+    depends_on:
+      - backend

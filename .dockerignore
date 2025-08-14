@@ -1,0 +1,13 @@
+# backend/.dockerignore
+.venv/
+*/.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+.env
+node_modules/
+.git/
+*/uv.lock
