@@ -1,10 +1,10 @@
 FROM ghcr.io/astral-sh/uv:python3.10-bookworm-slim
 
-WORKDIR /workspace
+WORKDIR /backend
 
-COPY backend/pyproject.toml /workspace/
+COPY backend/pyproject.toml /backend/
 
-COPY . /workspace/
+COPY backend/ /backend/
 
 # Install uv and sync dependencies
 ENV UV_LINK_MODE=copy
@@ -17,4 +17,4 @@ RUN uv sync --no-cache
 EXPOSE 8080
 
 # Use uv run to execute fastapi server
-CMD ["uv", "run", "uvicorn", "backend.app:app", "--port", "8080"]
+CMD ["uv", "run", "uvicorn", "app:app", "--port", "8080"]
