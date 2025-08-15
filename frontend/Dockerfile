@@ -1,11 +1,11 @@
 FROM ghcr.io/astral-sh/uv:python3.10-bookworm-slim
 
-WORKDIR /frontend
+WORKDIR /workspace
 
-COPY frontend/pyproject.toml /frontend/
+COPY frontend/pyproject.toml /workspace/
 
 # Change to backend directory where pyproject.toml exists
-COPY frontend/ /frontend/
+COPY . /workspace/
 
 # Install uv and sync dependencies
 ENV UV_LINK_MODE=copy
@@ -18,4 +18,4 @@ RUN uv sync --no-cache
 EXPOSE 8501
 
 # Use uv run to execute streamlit
-CMD ["uv", "run", "streamlit", "run", "app.py", "--server.port", "8501"]
+CMD ["uv", "run", "streamlit", "run", "frontend/app.py", "--server.port", "8501"]
