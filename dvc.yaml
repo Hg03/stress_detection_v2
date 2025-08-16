@@ -1,0 +1,14 @@
+stages:
+  process_data:
+    cmd: python src/stress_detection/feature_pipeline.py
+    deps:
+
+    - src/stress_detection/feature_pipeline.py
+    - src/stress_detection/config
+
+  train:
+    cmd: python src/stress_detection/training_pipeline.py
+    deps:
+
+    - src/stress_detection/training_pipeline.py
+    - src/stress_detection/config
