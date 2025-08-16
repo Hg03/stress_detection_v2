@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  process_data:
+    cmd: python src/stress_detection/feature_pipeline.py
+    deps:
+    - path: src/stress_detection/config
+      hash: md5
+      md5: 3e480e770d17bf514c112a6087e1e088.dir
+      size: 61
+      nfiles: 1
+    - path: src/stress_detection/feature_pipeline.py
+      hash: md5
+      md5: bea61898f080dd8a769f0a3dc3d973cd
+      size: 471
+  train:
+    cmd: python src/stress_detection/training_pipeline.py
+    deps:
+    - path: src/stress_detection/config
+      hash: md5
+      md5: 3e480e770d17bf514c112a6087e1e088.dir
+      size: 61
+      nfiles: 1
+    - path: src/stress_detection/training_pipeline.py
+      hash: md5
+      md5: 13575191cb6875c968d7b2c8c7413d59
+      size: 479
